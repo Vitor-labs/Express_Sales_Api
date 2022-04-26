@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "c978ac77-01f7-46fe-98c2-4354c5d87608",
+		"name": "LAB-LUBY",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USER ROUTES",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"103.326.111-00\",\r\n    \"name\": \"derick jonson\",\r\n    \"email\": \"derrick@ggggg.net\",\r\n    \"avatar\": \"resourses/imgs/derickjon.png\",\r\n    \"password\": \"bannanaHalls\",\r\n    \"biography\": \"elvis is the best!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/?offset=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/5f04885e-aad9-4d3e-9f1b-f9c3c470f3df",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"5f04885e-aad9-4d3e-9f1b-f9c3c470f3df"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE ONE",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"111.222.345-67\",\r\n    \"biography\": \"The guy of topgun\",\r\n    \"isAdmin\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/3d732d1c-926a-43f2-88f1-b5c0fddc66ab",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"3d732d1c-926a-43f2-88f1-b5c0fddc66ab"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ONE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/7814a613-8577-4084-8e77-117a5529f3d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"7814a613-8577-4084-8e77-117a5529f3d0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VENICLE ROUTES",
+			"item": [
+				{
+					"name": "SELL VENICLE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venicles/reserve/?saler=5f04885e-aad9-4d3e-9f1b-f9c3c470f3df&venicle=6432cc75-8979-407c-acc0-1475a7003f71",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venicles",
+								"reserve",
+								""
+							],
+							"query": [
+								{
+									"key": "saler",
+									"value": "5f04885e-aad9-4d3e-9f1b-f9c3c470f3df"
+								},
+								{
+									"key": "venicle",
+									"value": "6432cc75-8979-407c-acc0-1475a7003f71"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE VENICLE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mark\": \"chevrolet\",\r\n    \"model\": \"onyx-plus\",\r\n    \"year\": 2021,\r\n    \"color\": \"red-metalic\",\r\n    \"chassis\": \"FEINFEIN3431DSW\",\r\n    \"engine\": \"1.0\",\r\n    \"price\": 48300,\r\n    \"description\": \"other morden car for day life\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venicles/96e23475-7c45-45dc-92b8-695ca06b9950",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venicles",
+								"96e23475-7c45-45dc-92b8-695ca06b9950"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY SALE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/venicles/status?limit=5&saled=on_sale",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"venicles",
+								"status"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "saled",
+									"value": "on_sale"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
