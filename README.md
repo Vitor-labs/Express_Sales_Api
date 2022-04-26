@@ -1,6 +1,6 @@
 # AutoLuby
 
-### **REQUISITOS FUNCIONAIS** [4 / 8]
+### **REQUISITOS FUNCIONAIS** [8 / 8]
 
 ##### [x] **RF01 -** CRUD de funcionários
 
