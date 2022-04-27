@@ -31,7 +31,8 @@ class TokenAuth {
             return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
         }
     }
-
+    // basicaly i thinked that only the user with the admin role can access tother users data, but
+    // you, or other user can acess the data about himself
     verifyTokenAuth = (req: Request, res: Response, next: NextFunction) => {
         this.verify_token(req, res, () => {
             const { id, isAdmin } = req.body;
@@ -41,7 +42,7 @@ class TokenAuth {
             next();
         });
     }
-
+    // this is the same as verifyTokenAuth but for the admin
     verifyTokenAndAdmin = (req: Request, res: Response, next: NextFunction) => {
         this.verify_token(req, res, () => {
             if (req.body.isAdmin) {
