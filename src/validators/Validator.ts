@@ -14,9 +14,9 @@ class Validator {
 
     checkLogin() {
         return [
-            body('email')
-                .exists().withMessage('email is required')
-                .isEmail().withMessage('email is not valid'),
+            body('id')
+                .exists().withMessage('id is required')
+                .isUUID(4).withMessage('id must be a valid uuid'),
             body('password')
                 .exists().withMessage('password is required')
                 .isLength({ min: 6 }).withMessage('password is too short')

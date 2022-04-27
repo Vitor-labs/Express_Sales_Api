@@ -9,23 +9,22 @@ import { User } from "../models/Users";
 // Register a new user
 class UserController {
     async loginUser(req: Request, res: Response) {
-        const { email, password } = req.body;
+        const { id, password } = req.body;
         const pass = process.env.SECRET_KEY as string;
         try {
             const user = await User.findOne({
-                attributes: ['id', 'email', 'password'],
-                where: { email: email }
+                attributes: ['id', 'isAdmin', 'password'],
+                where: { id: id }
             });
             if (!user) {
                 res.status(404).send({ msg: "User not found" });
             } else {
-                console.log(password, user.getDataValue('password'));
                 const isPasswordValid = bcrypt.compareSync(password, user.getDataValue('password'));
                 if (!isPasswordValid) {
                     res.status(401).send({ msg: "Invalid password" });
                 } else {
                     const token = jwt.sign(
-                        { id: user.getDataValue('id'), email: user.getDataValue('email') },
+                        { id: user.getDataValue('id'), email: user.getDataValue('isAdmin') },
                         pass,
                         { expiresIn: "1h" }
                     );

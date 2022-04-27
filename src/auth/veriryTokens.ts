@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
+require('dotenv').config();
+
 const JWT = jwt;
 
 class TokenAuth {
@@ -10,12 +12,24 @@ class TokenAuth {
         if (!token) {
             return res.status(401).send({ auth: false, message: 'No token provided.' });
         }
-        JWT.verify(token, process.env.JWT_SEC as string, (err) => {
-            if (err) {
-                return res.status(403).send({ auth: false, message: 'Failed to authenticate token.' });
-            }
+        const secret = process.env.SECRET_KEY as string;
+        try {
+            const decoded = JWT.verify(token, secret);
+            console.log(decoded);
             next();
-        });
+            JWT.verify(token, secret, (err, decoded) => {
+                if (err) {
+                    console.log(err);
+                    return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+                }
+                // if everything good, save to request for use in other routes
+                req.body = decoded;
+                next();
+            });
+        } catch (error) {
+            console.log(error);
+            return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+        }
     }
 
     verifyTokenAuth = (req: Request, res: Response, next: NextFunction) => {
