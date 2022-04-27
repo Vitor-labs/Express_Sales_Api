@@ -24,7 +24,7 @@ class UserController {
                     res.status(401).send({ msg: "Invalid password" });
                 } else {
                     const token = jwt.sign(
-                        { id: user.getDataValue('id'), email: user.getDataValue('isAdmin') },
+                        { id: user.getDataValue('id'), isAdmin: user.getDataValue('isAdmin') },
                         pass,
                         { expiresIn: "1h" }
                     );

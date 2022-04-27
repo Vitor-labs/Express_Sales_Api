@@ -14,8 +14,6 @@ class TokenAuth {
         }
         const secret = process.env.SECRET_KEY as string;
         try {
-            const decoded = JWT.verify(token, secret);
-            console.log(decoded);
             next();
             JWT.verify(token, secret, (err, decoded) => {
                 if (err) {
@@ -27,7 +25,6 @@ class TokenAuth {
                 next();
             });
         } catch (error) {
-            console.log(error);
             return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
         }
     }
@@ -45,10 +42,11 @@ class TokenAuth {
     // this is the same as verifyTokenAuth but for the admin
     verifyTokenAndAdmin = (req: Request, res: Response, next: NextFunction) => {
         this.verify_token(req, res, () => {
+            console.log(req.body.isAdmin);
             if (req.body.isAdmin) {
                 next();
             } else {
-                res.status(403).json("You are not alowed to do that!");
+                return res.status(403).json("You are not alowed to do that!");
             }
         });
     };

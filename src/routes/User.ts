@@ -6,6 +6,11 @@ import UserValidator from '../validators/Validator';
 import UserController from '../controllers/User';
 import TokenAuth from "../auth/veriryTokens";
 
+// basicaly the server routes are locked if you are not logged in
+// or are a admin, and you cannot create a admin user if you are
+// not an admin, só first desactivate the admin-token verification
+// and then create a admin user, so then you can acess the other 
+// routes
 
 const userRoute = express.Router();
 
@@ -24,7 +29,7 @@ userRoute.post('/',
 
 // GET ALL THE USERS
 userRoute.get('/',
-    TokenAuth.verifyTokenAuth,
+    TokenAuth.verifyTokenAndAdmin,
     UserValidator.checkLimits(),
     Middleware.handle,
     UserController.getUsers);
