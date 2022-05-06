@@ -1,5 +1,3 @@
-# AutoLuby
-
 ### **REQUISITOS FUNCIONAIS** [8 / 8]
 
 ##### [x] **RF01 -** CRUD de funcionários
@@ -77,6 +75,3 @@ Descrição: todas as datas deverão estar no formato DD/MM/yyyy
 **[X] RNF04 - Gostaríamos de ver a utilização de typescript (OPCIONAL)**
 
 **[X] RNF05 - Gostaríamos que os campos necessários para os endpoints fossem validados na requisição. (OPCIONAL)**
-
-### **Atenção:** ao finalizar a prova, o candidato deverá seguir as instruções do e-mail recebido!
-#### **Atenção:** em caso de dúvidas, enviar e-mail para labluby@luby.com.br"# LAB-LUBY-NODE" 
