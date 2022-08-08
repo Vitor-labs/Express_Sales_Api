@@ -2,25 +2,12 @@ import express from "express";
 
 // internal imports
 import Middleware from '../middleweres/validations_handler';
-import VenicleValidator from '../validators/Validator';
+import VenicleValidator from '../validators/VenicleValidator';
+import SaleValidator from '../validators/SaleValidator';
 import VenicleController from '../controllers/Venicle';
 import TokenAuth from "../auth/veriryTokens";
 
 const venicleRoute = express.Router();
-
-// SALE A SINGLE VENICLE
-venicleRoute.put('/sell',
-    TokenAuth.verifyTokenAuth,
-    VenicleValidator.checkSaleOrReserve(),
-    Middleware.handle,
-    VenicleController.sellVenicle);
-
-// RESERVATE A SINGLE VENICLE
-venicleRoute.put('/reserve',
-    TokenAuth.verifyTokenAuth,
-    VenicleValidator.checkSaleOrReserve(),
-    Middleware.handle,
-    VenicleController.reserveVenicle);
 
 // CREATE A SINGLE VENICLE
 venicleRoute.post('/',
@@ -40,7 +27,7 @@ venicleRoute.get('/',
 venicleRoute.get('/status',
     TokenAuth.verifyTokenAuth,
     VenicleValidator.checkLimits(),
-    VenicleValidator.checkStatusOfSales(),
+    SaleValidator.checkStatusOfSales(),
     Middleware.handle,
     VenicleController.getVenicleByStatus);
 

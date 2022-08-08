@@ -6,7 +6,6 @@ require('dotenv').config();
 const JWT = jwt;
 
 class TokenAuth {
-
     verify_token = (req: Request, res: Response, next: NextFunction) => {
         const token = req.headers.token as string;
         if (!token) {

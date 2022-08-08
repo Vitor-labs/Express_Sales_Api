@@ -71,9 +71,9 @@ class UserController {
             });
             if (!user) {
                 res.status(404).send({ msg: "User not found" });
-            } else {
-                res.status(200).send(user);
             }
+            res.status(200).send(user);
+
         } catch (err) {
             res.status(500).send(err);
         }

@@ -2,7 +2,7 @@ import express from "express";
 
 // internal imports
 import Middleware from '../middleweres/validations_handler';
-import UserValidator from '../validators/Validator';
+import UserValidator from '../validators/UserValidator';
 import UserController from '../controllers/User';
 import TokenAuth from "../auth/veriryTokens";
 
